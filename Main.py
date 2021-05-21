@@ -71,6 +71,11 @@ def calculate_precision(predict_class, matrix):
 def calculate_recall(predict_class, matrix):
     return matrix[predict_class][predict_class] / sum([matrix[i][predict_class] for i in matrix.keys()])
 
+def calculate_f1_score(predict_class, matrix):
+    precision = calculate_precision(predict_class, matrix)
+    recall = calculate_recall(predict_class, matrix)
+    return (2 * (precision * recall)) / (precision + recall)
+
 def calculate_accuracy(matrix):
     correct = sum([matrix[i][i] for i in matrix.keys()])
     total = sum([matrix[i][j] for i in matrix.keys() for j in matrix[i].keys()])
