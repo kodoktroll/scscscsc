@@ -66,9 +66,11 @@ def generate_confusion_matrix(classes, predicted, actual):
     return result_dict
 
 def calculate_precision(predict_class, matrix):
+    #precision = dibagi baris
     return matrix[predict_class][predict_class] / sum([matrix[predict_class][i] for i in matrix.keys()])
 
 def calculate_recall(predict_class, matrix):
+    #recall = dibagi kolom
     return matrix[predict_class][predict_class] / sum([matrix[i][predict_class] for i in matrix.keys()])
 
 def calculate_f1_score(predict_class, matrix):
@@ -77,6 +79,7 @@ def calculate_f1_score(predict_class, matrix):
     return (2 * (precision * recall)) / (precision + recall)
 
 def calculate_accuracy(matrix):
+    # akurasi = yg correct dibagi keseluruhan
     correct = sum([matrix[i][i] for i in matrix.keys()])
     total = sum([matrix[i][j] for i in matrix.keys() for j in matrix[i].keys()])
     return correct / total
